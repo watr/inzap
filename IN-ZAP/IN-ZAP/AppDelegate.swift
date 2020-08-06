@@ -8,6 +8,22 @@
 
 import Cocoa
 
+extension URL {
+    enum ZeplinURL {
+        case web, app
+    }
+    
+    var isZeplinWebURL: Bool {
+        if case let (scheme?, host?) = (self.scheme, self.host),
+            (scheme.caseInsensitiveCompare("https") == .orderedSame &&
+                host.caseInsensitiveCompare("zpl.io") == .orderedSame)
+        {
+            return true
+        }
+        return false
+    }
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -23,8 +39,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidBecomeActive(_ notification: Notification) {
         let pb = NSPasteboard.general
-        if let string = pb.string(forType: .string) {
+        if let string = pb.string(forType: .string), let url = URL(string: string) {
             print("string from pasteboard: \(string)")
+            print("url from pasteboard: \(url)")
+            let isZeplinWeb = url.isZeplinWebURL
+            print("is zeplin web url? \(isZeplinWeb)")
         }
     }
 
