@@ -21,6 +21,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
+    func applicationDidBecomeActive(_ notification: Notification) {
+        let pb = NSPasteboard.general
+        if let string = pb.string(forType: .string) {
+            print("string from pasteboard: \(string)")
+        }
+    }
 
 }
 
