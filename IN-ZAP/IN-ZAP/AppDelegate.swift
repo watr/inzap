@@ -13,7 +13,7 @@ extension URL {
         case web, app
     }
     
-    var isZeplinWebURL: Bool {
+    var isZeplinShortenURL: Bool {
         if case let (scheme?, host?) = (self.scheme, self.host),
             (scheme.caseInsensitiveCompare("https") == .orderedSame &&
                 host.caseInsensitiveCompare("zpl.io") == .orderedSame)
@@ -42,8 +42,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let string = pb.string(forType: .string), let url = URL(string: string) {
             print("string from pasteboard: \(string)")
             print("url from pasteboard: \(url)")
-            let isZeplinWeb = url.isZeplinWebURL
-            print("is zeplin web url? \(isZeplinWeb)")
+            let isZeplinShorten = url.isZeplinShortenURL
+            print("is zeplin shorten url? \(isZeplinShorten)")
         }
     }
 
