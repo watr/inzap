@@ -62,6 +62,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, URLSessionTaskDelegate {
         // Insert code here to tear down your application
     }
 
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if flag {
+            return false
+        }
+        else {
+            NSApplication.shared.windows.first?.makeKeyAndOrderFront(self)
+            return true
+        }
+    }
+    
     func applicationDidBecomeActive(_ notification: Notification) {
         let pb = NSPasteboard.general
         if let string = pb.string(forType: .string), let url = URL(string: string) {
