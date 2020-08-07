@@ -8,6 +8,8 @@
 
 import Cocoa
 
+let zeplinWebAppHost = "app.zeplin.io"
+
 extension URL {
     enum ZeplinURL {
         case web, app
@@ -22,6 +24,33 @@ extension URL {
         }
         return false
     }
+    
+    var isZeplinAppConvertible:  Bool {
+        if let host = self.host,
+            host.caseInsensitiveCompare(zeplinWebAppHost) == .orderedSame
+        {
+            let components = self.pathComponents
+            return (
+                components.count == 5 &&
+                components[1] == "project" &&
+                components[3] == "screen"
+            )
+        }
+        return false
+    }
+    
+    func zeplinAppURL() -> URL? {
+        if self.isZeplinAppConvertible {
+            let components = self.pathComponents
+            return URL(string: "zpl://screen?sid=\(components[4])&pid=\(components[2])")
+        }
+        return nil
+    }
+}
+
+func openURLWithZeplinApp(url: URL) {
+    print("open url with \(url.absoluteString)")
+    NSWorkspace.shared.open(url)
 }
 
 @NSApplicationMain
@@ -42,7 +71,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, URLSessionTaskDelegate {
         if let string = pb.string(forType: .string), let url = URL(string: string) {
             print("string from pasteboard: \(string)")
             print("url from pasteboard: \(url)")
-            if url.isZeplinShortenURL {
+            if url.isZeplinAppConvertible {
+                openURLWithZeplinApp(url: url.zeplinAppURL()!)
+            }
+            else if url.isZeplinShortenURL {
                 let session =
                     URLSession(configuration: URLSessionConfiguration.default,
                                delegate: self, delegateQueue: OperationQueue.main)
@@ -62,6 +94,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, URLSessionTaskDelegate {
                     completionHandler: @escaping (URLRequest?) -> Void) {
         let redirectToURL = request.url!
         print("redirect to (maybe original url) \(redirectToURL)")
+        let url = redirectToURL
+        if redirectToURL.isZeplinAppConvertible {
+            openURLWithZeplinApp(url: url.zeplinAppURL()!)
+        }
     }
 
 }
