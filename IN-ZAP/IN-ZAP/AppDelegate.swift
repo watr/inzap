@@ -11,10 +11,6 @@ import Cocoa
 let zeplinWebAppHost = "app.zeplin.io"
 
 extension URL {
-    enum ZeplinURL {
-        case web, app
-    }
-    
     var isZeplinShortenURL: Bool {
         if case let (scheme?, host?) = (self.scheme, self.host),
             (scheme.caseInsensitiveCompare("https") == .orderedSame &&
