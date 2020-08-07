@@ -73,6 +73,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, URLSessionTaskDelegate {
     }
     
     func applicationDidBecomeActive(_ notification: Notification) {
+        if NSApplication.shared.windows.count == 1 &&
+            !NSApplication.shared.windows.first!.isVisible
+        {
+            NSApplication.shared.windows.first!.makeKeyAndOrderFront(self)
+        }
+        
         let pb = NSPasteboard.general
         if let string = pb.string(forType: .string), let url = URL(string: string) {
             print("string from pasteboard: \(string)")
