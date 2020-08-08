@@ -110,6 +110,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, URLSessionTaskDelegate {
         if redirectToURL.isZeplinAppConvertible {
             openURLWithZeplinApp(url: url.zeplinAppURL()!)
         }
+        // refuse the redirect by 'nil'
+        completionHandler(nil)
     }
 
 }
