@@ -10,7 +10,7 @@ import Cocoa
 
 class ViewController: NSViewController {
     let urlManager = URLManager()
-    let windowObserver: Any? = nil
+    var windowObserver: Any? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,20 +19,21 @@ class ViewController: NSViewController {
             self.handleGiven(string: expanded.absoluteString)
         }
         
-        NotificationCenter.default.addObserver(forName: NSWindow.didBecomeKeyNotification,
-                                               object: nil,
-                                               queue: OperationQueue.main) { [weak self] (note) in
-                                                guard let self = self, let window = note.object as? NSWindow, window == self.view.window else {
-                                                    return
-                                                }
-                                                
-                                                let pb = NSPasteboard.general
-                                                if let string = pb.string(forType: .string) {
-                                                    self.handleGiven(string: string)
-                                                }
-                                                
-                                                print("window did become key")
-                                                
+        self.windowObserver =
+            NotificationCenter.default.addObserver(forName: NSWindow.didBecomeKeyNotification,
+                                                   object: nil,
+                                                   queue: OperationQueue.main) { [weak self] (note) in
+                                                    guard let self = self, let window = note.object as? NSWindow, window == self.view.window else {
+                                                        return
+                                                    }
+                                                    
+                                                    let pb = NSPasteboard.general
+                                                    if let string = pb.string(forType: .string) {
+                                                        self.handleGiven(string: string)
+                                                    }
+                                                    
+                                                    print("window did become key")
+                                                    
         }
     }
 
