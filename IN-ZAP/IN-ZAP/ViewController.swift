@@ -43,9 +43,6 @@ class ViewController: NSViewController {
                                                     if let string = pb.string(forType: .string) {
                                                         self.handleUserGiven(string: string)
                                                     }
-                                                    
-                                                    print("window did become key")
-                                                    
         }
     }
     
