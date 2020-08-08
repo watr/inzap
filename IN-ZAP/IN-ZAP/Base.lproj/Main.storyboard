@@ -684,8 +684,8 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                    <window key="window" title="IN-ZAP" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="in-zap.main" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="320" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -706,11 +706,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="IN_ZAP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="fwl-Hw-BwG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wpx-mK-pcT">
                                         <rect key="frame" x="124" y="13" width="73" height="32"/>
@@ -725,22 +725,40 @@ DQ
                                             <action selector="open:" target="XfG-lQ-9wD" id="nUp-Q8-7VS"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a3S-Ya-zMz">
-                                        <rect key="frame" x="18" y="49" width="284" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="8qo-2V-eU0">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3S-Ya-zMz">
+                                        <rect key="frame" x="18" y="65" width="284" height="16"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" alignment="center" title="Label" usesSingleLineMode="YES" id="8qo-2V-eU0">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="6G9-EB-fe9">
+                                        <rect key="frame" x="0.0" y="41" width="320" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="hgq-az-rhp"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="fcb-Si-6iY">
+                                        <rect key="frame" x="0.0" y="89" width="320" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="t0b-VK-ZJn"/>
+                                        </constraints>
+                                    </customView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="fcb-Si-6iY" firstAttribute="leading" secondItem="fwl-Hw-BwG" secondAttribute="leading" id="4Db-bd-QkI"/>
                                     <constraint firstItem="a3S-Ya-zMz" firstAttribute="leading" secondItem="fwl-Hw-BwG" secondAttribute="leading" constant="20" symbolic="YES" id="5Pu-sX-DMT"/>
+                                    <constraint firstItem="Wpx-mK-pcT" firstAttribute="top" secondItem="6G9-EB-fe9" secondAttribute="bottom" id="7kc-bW-f7x"/>
                                     <constraint firstAttribute="bottom" secondItem="Wpx-mK-pcT" secondAttribute="bottom" constant="20" symbolic="YES" id="Bqu-7w-Dmv"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="D5Y-wW-EOt"/>
-                                    <constraint firstItem="Wpx-mK-pcT" firstAttribute="top" secondItem="a3S-Ya-zMz" secondAttribute="bottom" constant="8" symbolic="YES" id="Ps5-cg-oRw"/>
+                                    <constraint firstItem="6G9-EB-fe9" firstAttribute="leading" secondItem="fwl-Hw-BwG" secondAttribute="leading" id="Qdt-d0-EbI"/>
                                     <constraint firstAttribute="trailing" secondItem="a3S-Ya-zMz" secondAttribute="trailing" constant="20" symbolic="YES" id="aEJ-Py-JCk"/>
-                                    <constraint firstItem="a3S-Ya-zMz" firstAttribute="top" secondItem="fwl-Hw-BwG" secondAttribute="top" constant="20" symbolic="YES" id="chW-gl-4nS"/>
+                                    <constraint firstAttribute="trailing" secondItem="6G9-EB-fe9" secondAttribute="trailing" id="d66-Lc-U9j"/>
+                                    <constraint firstItem="a3S-Ya-zMz" firstAttribute="top" secondItem="fcb-Si-6iY" secondAttribute="bottom" constant="8" symbolic="YES" id="hNX-cD-MR2"/>
+                                    <constraint firstItem="6G9-EB-fe9" firstAttribute="top" secondItem="a3S-Ya-zMz" secondAttribute="bottom" id="tsY-pk-nFM"/>
+                                    <constraint firstAttribute="trailing" secondItem="fcb-Si-6iY" secondAttribute="trailing" id="vIk-hr-641"/>
+                                    <constraint firstItem="fcb-Si-6iY" firstAttribute="top" secondItem="fwl-Hw-BwG" secondAttribute="top" id="wJl-Hb-5Be"/>
                                     <constraint firstItem="Wpx-mK-pcT" firstAttribute="centerX" secondItem="fwl-Hw-BwG" secondAttribute="centerX" id="yCR-HT-NHi"/>
                                 </constraints>
                             </customView>
