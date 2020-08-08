@@ -11,6 +11,11 @@ import Cocoa
 class ViewController: NSViewController {
     let urlManager = URLManager()
     var windowObserver: Any? = nil
+    var pasteboardString: String? = nil {
+        didSet {
+            print("did set \(self.pasteboardString ?? "nil")")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +34,7 @@ class ViewController: NSViewController {
                                                     
                                                     let pb = NSPasteboard.general
                                                     if let string = pb.string(forType: .string) {
-                                                        self.handleGiven(string: string)
+                                                        self.handleGiven(string: string, updates:  true)
                                                     }
                                                     
                                                     print("window did become key")
@@ -37,9 +42,13 @@ class ViewController: NSViewController {
         }
     }
 
-    func handleGiven(string: String) {
+    func handleGiven(string: String, updates: Bool = false) {
         guard let url = URL(string: string), let zurl = ZeplinAppURL(url: url) else {
             return
+        }
+        
+        if updates && self.pasteboardString != string {
+            self.pasteboardString = string
         }
 
         switch zurl {
