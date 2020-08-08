@@ -13,6 +13,8 @@
 		7B3E7A3824DC07E400C3532C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B3E7A3624DC07E400C3532C /* Main.storyboard */; };
 		7B3E7A4424DC07E400C3532C /* IN_ZAPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E7A4324DC07E400C3532C /* IN_ZAPTests.swift */; };
 		7B3E7A4F24DC07E400C3532C /* IN_ZAPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E7A4E24DC07E400C3532C /* IN_ZAPUITests.swift */; };
+		7BB70A9524DE318300DC07F5 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB70A9424DE318300DC07F5 /* URLManager.swift */; };
+		7BB70A9624DE32A100DC07F5 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB70A9424DE318300DC07F5 /* URLManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,7 @@
 		7B3E7A4A24DC07E400C3532C /* IN-ZAPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IN-ZAPUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B3E7A4E24DC07E400C3532C /* IN_ZAPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IN_ZAPUITests.swift; sourceTree = "<group>"; };
 		7B3E7A5024DC07E400C3532C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BB70A9424DE318300DC07F5 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,7 @@
 			children = (
 				7B3E7A3024DC07E200C3532C /* AppDelegate.swift */,
 				7B3E7A3224DC07E200C3532C /* ViewController.swift */,
+				7BB70A9424DE318300DC07F5 /* URLManager.swift */,
 				7B3E7A3424DC07E400C3532C /* Assets.xcassets */,
 				7B3E7A3624DC07E400C3532C /* Main.storyboard */,
 				7B3E7A3924DC07E400C3532C /* Info.plist */,
@@ -256,6 +260,7 @@
 			files = (
 				7B3E7A3324DC07E200C3532C /* ViewController.swift in Sources */,
 				7B3E7A3124DC07E200C3532C /* AppDelegate.swift in Sources */,
+				7BB70A9524DE318300DC07F5 /* URLManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B3E7A4424DC07E400C3532C /* IN_ZAPTests.swift in Sources */,
+				7BB70A9624DE32A100DC07F5 /* URLManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
