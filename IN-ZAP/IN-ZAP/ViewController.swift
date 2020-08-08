@@ -9,11 +9,20 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
+    let windowObserver: Any? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(forName: NSWindow.didBecomeKeyNotification,
+                                               object: nil,
+                                               queue: OperationQueue.main) { [weak self] (note) in
+                                                guard let self = self, let window = note.object as? NSWindow, window == self.view.window else {
+                                                    return
+                                                }
+                                                print("window did become key")
+                                                
+        }
     }
 
     override var representedObject: Any? {
@@ -22,6 +31,11 @@ class ViewController: NSViewController {
         }
     }
 
+    deinit {
+        if let windowObserver = self.windowObserver {
+            NotificationCenter.default.removeObserver(windowObserver)
+        }
+    }
 
 }
 
