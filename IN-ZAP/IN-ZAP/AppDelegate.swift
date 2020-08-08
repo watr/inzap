@@ -11,7 +11,7 @@ import Cocoa
 let zeplinWebAppHost = "app.zeplin.io"
 
 extension URL {
-    var isZeplinShortenURL: Bool {
+    var isZeplinShortendURL: Bool {
         if case let (scheme?, host?) = (self.scheme, self.host),
             (scheme.caseInsensitiveCompare("https") == .orderedSame &&
                 host.caseInsensitiveCompare("zpl.io") == .orderedSame)
@@ -86,7 +86,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, URLSessionTaskDelegate {
             if url.isZeplinAppConvertible {
                 openURLWithZeplinApp(url: url.zeplinAppURL()!)
             }
-            else if url.isZeplinShortenURL {
+            else if url.isZeplinShortendURL {
                 let session =
                     URLSession(configuration: URLSessionConfiguration.default,
                                delegate: self, delegateQueue: OperationQueue.main)
